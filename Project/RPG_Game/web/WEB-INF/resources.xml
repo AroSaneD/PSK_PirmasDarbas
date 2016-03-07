@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <Resource id="RPG_DB" type="javax.sql.DataSource">#Mon Mar 07 21:13:16 EET 2016
+jdbcDriver=org.apache.derby.jdbc.ClientDriver
+password=player
+userName=player
+jdbcUrl=jdbc\:derby\://localhost\:1527/PG_DB
+</Resource>
+</resources>
