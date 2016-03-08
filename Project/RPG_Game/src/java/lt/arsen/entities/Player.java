@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -32,6 +33,10 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(name = "Player.findById", query = "SELECT p FROM Player p WHERE p.id = :id"),
     @NamedQuery(name = "Player.findByHealth", query = "SELECT p FROM Player p WHERE p.health = :health")})
 public class Player implements Serializable {
+
+    @Size(max = 255)
+    @Column(name = "PLAYER_UID")
+    private String playerUid;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -109,26 +114,32 @@ public class Player implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (playerUid != null ? playerUid.hashCode() : 0);
+        
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Player)) {
+        if(object == null || !(object instanceof Player)){
             return false;
         }
-        Player other = (Player) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        Player otherPlayer = (Player)object;
+        return this.playerUid.equals(otherPlayer.getPlayerUid());
     }
 
     @Override
     public String toString() {
         return "lt.arsen.entities.Player[ id=" + id + " ]";
+    }
+
+    public String getPlayerUid() {
+        return playerUid;
+    }
+
+    public void setPlayerUid(String playerUid) {
+        this.playerUid = playerUid;
     }
     
 }

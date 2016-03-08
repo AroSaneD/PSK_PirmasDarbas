@@ -97,7 +97,7 @@ public class Faction implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (name != null ? name.hashCode() : 0);
         return hash;
     }
 
@@ -108,7 +108,7 @@ public class Faction implements Serializable {
             return false;
         }
         Faction other = (Faction) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.name == null && other.name != null) || (this.name != null && !this.name.equals(other.id))) {
             return false;
         }
         return true;
